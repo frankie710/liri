@@ -3,8 +3,8 @@ var keys = require('./keys.js');
 var request = require('request');
 var twitter = require('twitter');
 var spotify = require('spotify');
-var spotify = new Spotify(keys.spotify);
-var client = new Twitter(keys.twitter);
+var spotifyKeys = new Spotify(keys.spotify);
+var twitterKeys = new Twitter(keys.twitter);
 
 
 
@@ -28,8 +28,8 @@ switch (user) {
         break;
 
     case "spotify-this-song":
-        if (x) {
-            spotify(x);
+        if (song) {
+            spotify(song);
         } else {
             spotify("Taylor Swift Love Story");
         }
@@ -79,7 +79,7 @@ function omdb(movie) {
 
 function tweet() {
     var tweetAccount = { screen_name: 'ThePhoenixRises' };
-    client.get('ThePhoenixRises/user_timeline', tweetAccount, function (err, tweets, response) {
+    twitterKeys.get('ThePhoenixRises/user_timeline', tweetAccount, function (err, tweets, response) {
         if (err) {
             console.log('Sorry, we cannot get your tweets');
         }
