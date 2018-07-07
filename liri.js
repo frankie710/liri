@@ -7,11 +7,8 @@ var Spotify = require('node-spotify-api');
 var spotifyKeys = new Spotify(keys.spotify);
 
 
-
-
-
 var input = process.argv;
-var user = process.argv[2];
+var command = process.argv[2];
 var arr = "";
 for (var i = 3; i < input.length; i++) {
     if (i > 3 && i < input.length) {
@@ -22,7 +19,7 @@ for (var i = 3; i < input.length; i++) {
 }
 
 
-switch (user) {
+switch (command) {
     case "show-tweets":
         tweet();
         break;
