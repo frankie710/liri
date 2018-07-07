@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config()
 var keys = require('./keys.js');
 var request = require('request');
 var Twitter = require('twitter');
@@ -23,19 +23,19 @@ for (var i = 3; i < input.length; i++) {
 
 
 switch (user) {
-    case "show-my-tweets":
+    case "show-tweets":
         tweet();
         break;
 
-    case "spotify-this-song":
-        if (song) {
-            spotify(song);
+    case "spotify":
+        if (arr) {
+            spotify(arr);
         } else {
             spotify("Taylor Swift Love Story");
         }
         break;
 
-    case "search-movie-this":
+    case "search-movie":
         if (arr) {
             omdb(arr)
         } else {
@@ -48,15 +48,15 @@ switch (user) {
         break;
 
     default:
-        console.log("{Please enter your command: (options: show-my-tweets, spotify-this-song, search-this-movie, do-what-it-says}");
+        console.log("{Please enter your command: (options: show-tweets, spotify, search-movie, do-what-it-says}");
         break;
 }
 
 
 function omdb(movie) {
-    var omdbURL = 'http://www.omdbapi.com/?t=' + movie + '&plot=short&tomatoes=true';
+    var URL = 'http://www.omdbapi.com/?t=' + movie + "&y=&plot=short&apikey=40e9cece";
 
-    request(omdbURL, function (error, response, body) {
+    request(URL, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var body = JSON.parse(body);
             console.log("Title of the move: " + body.Title);
@@ -94,7 +94,7 @@ function tweet() {
 }
 
 function spotify(songName) {
-    spotify.search({ type: 'track', query: songName }, function (err, data) {
+    spotifyKeys.search({ type: 'track', query: songName }, function (err, data) {
         if (err) {
             console.log('Error occurred.');
         } else if (!err) {
