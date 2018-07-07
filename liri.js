@@ -8,7 +8,7 @@ var spotifyKeys = new Spotify(keys.spotify);
 
 
 var input = process.argv;
-var command = process.argv[2];
+var command = input[2];
 var arr = "";
 for (var i = 3; i < input.length; i++) {
     if (i > 3 && i < input.length) {
@@ -59,7 +59,7 @@ function omdb(movie) {
             console.log("Title of the move: " + body.Title);
             console.log("Year the movie came out: " + body.Year);
             console.log("IMdB Rating of the movie: " + body.imdbRating);
-            console.log("Country where the movie was produced: " + body.Country);
+            console.log("Country produced: " + body.Country);
             console.log("Language of the movie: " + body.Language);
             console.log("Plot of the movie: " + body.Plot);
             console.log("Actors in the movie: " + body.Actors);
@@ -75,7 +75,7 @@ function omdb(movie) {
 };
 
 function tweet() {
-    var tweetAccount = { screen_name: 'ThePhoenixRises' };
+    var tweetAccount = {screen_name: 'ThePhoenixRises'};
     twitterKeys.get('ThePhoenixRises/user_timeline', tweetAccount, function (err, tweets, response) {
         if (err) {
             console.log('Sorry, we cannot get your tweets');
